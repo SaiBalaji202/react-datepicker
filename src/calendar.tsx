@@ -489,8 +489,8 @@ export default class Calendar extends Component<CalendarProps, CalendarState> {
 
   changeMonthYear = (
     monthYear: Date,
-    panelDate: Date = this.state.date,
-    monthSelectedIn: number = 0,
+    panelDate: Date,
+    monthSelectedIn: number,
   ): void => {
     this.setState(
       {
@@ -861,7 +861,7 @@ export default class Calendar extends Component<CalendarProps, CalendarState> {
   };
 
   renderYearDropdown = (
-    monthDate: Date = this.state.date,
+    monthDate: Date,
   ): React.ReactElement | undefined => {
     if (!this.props.showYearDropdown) {
       return;
@@ -878,8 +878,8 @@ export default class Calendar extends Component<CalendarProps, CalendarState> {
   };
 
   renderMonthDropdown = (
-    monthDate: Date = this.state.date,
-    i: number = 0,
+    monthDate: Date,
+    i: number,
   ): React.ReactElement | undefined => {
     if (!this.props.showMonthDropdown) {
       return;
@@ -895,8 +895,8 @@ export default class Calendar extends Component<CalendarProps, CalendarState> {
   };
 
   renderMonthYearDropdown = (
-    monthDate: Date = this.state.date,
-    i: number = 0,
+    monthDate: Date,
+    i: number,
   ): React.ReactElement | undefined => {
     if (!this.props.showMonthYearDropdown) {
       return;
