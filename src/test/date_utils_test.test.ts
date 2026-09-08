@@ -6,6 +6,7 @@ import {
   setMinutes,
 } from "date-fns";
 import { ptBR } from "date-fns/locale/pt-BR";
+import { enGB } from "date-fns/locale/en-GB";
 
 import {
   newDate,
@@ -1403,6 +1404,17 @@ describe("date_utils", () => {
       const end = getEndOfWeek(wednesday, undefined, 1);
       expect(start.getDate()).toBe(10); // Mon 2024-06-10
       expect(end.getDate()).toBe(16); // Sun 2024-06-16
+    });
+
+    it("uses the week start defined by a passed locale object", () => {
+      // enGB weeks start on Monday, so the week containing Wed 2024-06-12
+      // ends on Sun 2024-06-16
+      expect(getEndOfWeek(wednesday, enGB).getDate()).toBe(16);
+    });
+
+    it("uses the week start defined by a registered locale name", () => {
+      registerLocale("en-GB", enGB);
+      expect(getEndOfWeek(wednesday, "en-GB").getDate()).toBe(16);
     });
   });
 
